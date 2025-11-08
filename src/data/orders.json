@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "id": "ORD-001",
+      "customer": "Olivia Rhye",
+      "size": "250 kvm",
+      "status": "pending",
+      "product": "Wireless Headphones",
+      "quantity": 2,
+      "total": "$199.98"
+    },
+    {
+      "id": "ORD-002",
+      "customer": "Phoenix Baker",
+      "size": "100 kvm",
+      "status": "completed",
+      "product": "Smart Watch",
+      "quantity": 1,
+      "total": "$299.99"
+    },
+    {
+      "id": "ORD-003",
+      "customer": "Lana Steiner",
+      "size": "320 kvm",
+      "status": "shipped",
+      "product": "Laptop Stand",
+      "quantity": 3,
+      "total": "$89.97"
+    },
+    {
+      "id": "ORD-004",
+      "customer": "Demi Wilkinson",
+      "size": "150 kvm",
+      "status": "pending",
+      "product": "USB-C Cable",
+      "quantity": 5,
+      "total": "$49.95"
+    },
+    {
+      "id": "ORD-005",
+      "customer": "Candice Wu",
+      "size": "180 kvm",
+      "status": "completed",
+      "product": "Keyboard",
+      "quantity": 1,
+      "total": "$149.99"
+    }
+  ]
+}
