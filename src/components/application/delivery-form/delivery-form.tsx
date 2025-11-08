@@ -1,7 +1,7 @@
 "use client";
 
 import { Plus, Trash01 } from "@untitledui/icons";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/base/buttons/button";
 import { Input } from "@/components/base/input/input";
 import { Label } from "@/components/base/input/label";
@@ -56,22 +56,6 @@ export function DeliveryForm({ onClose }: { onClose?: () => void }) {
 
     const lastOrderLineRef = useRef<HTMLDivElement>(null);
     const lastFeeRef = useRef<HTMLDivElement>(null);
-    const [shouldScrollToOrderLine, setShouldScrollToOrderLine] = useState(false);
-    const [shouldScrollToFee, setShouldScrollToFee] = useState(false);
-
-    useEffect(() => {
-        if (shouldScrollToOrderLine && lastOrderLineRef.current) {
-            lastOrderLineRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
-            setShouldScrollToOrderLine(false);
-        }
-    }, [shouldScrollToOrderLine, orderLines]);
-
-    useEffect(() => {
-        if (shouldScrollToFee && lastFeeRef.current) {
-            lastFeeRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
-            setShouldScrollToFee(false);
-        }
-    }, [shouldScrollToFee, oneTimeFees]);
 
     const [formData, setFormData] = useState({
         customer: "",
@@ -94,7 +78,6 @@ export function DeliveryForm({ onClose }: { onClose?: () => void }) {
                 price: "0",
             },
         ]);
-        setShouldScrollToOrderLine(true);
     };
 
     const removeOrderLine = (id: string) => {
@@ -111,7 +94,6 @@ export function DeliveryForm({ onClose }: { onClose?: () => void }) {
                 price: "0",
             },
         ]);
-        setShouldScrollToFee(true);
     };
 
     const removeOneTimeFee = (id: string) => {
@@ -214,17 +196,7 @@ export function DeliveryForm({ onClose }: { onClose?: () => void }) {
                 {/* Order Lines */}
                 <div className="space-y-4">
                     <div className="sticky top-0 z-10 bg-white pb-2 -mx-6 px-6 pt-2">
-                        <div className="flex items-center justify-between">
-                            <h3 className="text-lg font-semibold text-gray-900">Orderrader</h3>
-                            <button
-                                type="button"
-                                onClick={addOrderLine}
-                                className="flex items-center gap-2 text-sm font-medium text-orange-600 hover:text-orange-700 transition-colors"
-                            >
-                                <Plus className="w-4 h-4" />
-                                Lägg till rad
-                            </button>
-                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900">Orderrader</h3>
                     </div>
                     
                     <div className="space-y-3">
@@ -323,23 +295,23 @@ export function DeliveryForm({ onClose }: { onClose?: () => void }) {
                                 </button>
                             </div>
                         ))}
+
+                        {/* Add Line Button */}
+                        <button
+                            type="button"
+                            onClick={addOrderLine}
+                            className="flex items-center gap-2 text-sm font-medium text-orange-600 hover:text-orange-700 transition-colors"
+                        >
+                            <Plus className="w-4 h-4" />
+                            Lägg till rad
+                        </button>
                     </div>
                 </div>
 
                 {/* One-Time Fees */}
                 <div className="space-y-4">
                     <div className="sticky top-0 z-10 bg-white pb-2 -mx-6 px-6 pt-2">
-                        <div className="flex items-center justify-between">
-                            <h3 className="text-lg font-semibold text-gray-900">Engångsavgifter</h3>
-                            <button
-                                type="button"
-                                onClick={addOneTimeFee}
-                                className="flex items-center gap-2 text-sm font-medium text-orange-600 hover:text-orange-700 transition-colors"
-                            >
-                                <Plus className="w-4 h-4" />
-                                Lägg till avgift
-                            </button>
-                        </div>
+                        <h3 className="text-lg font-semibold text-gray-900">Engångsavgifter</h3>
                     </div>
                     
                     <div className="space-y-3">
@@ -408,6 +380,16 @@ export function DeliveryForm({ onClose }: { onClose?: () => void }) {
                                 </button>
                             </div>
                         ))}
+
+                        {/* Add Fee Button */}
+                        <button
+                            type="button"
+                            onClick={addOneTimeFee}
+                            className="flex items-center gap-2 text-sm font-medium text-orange-600 hover:text-orange-700 transition-colors"
+                        >
+                            <Plus className="w-4 h-4" />
+                            Lägg till avgift
+                        </button>
                     </div>
                 </div>
             </div>
